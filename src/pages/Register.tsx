@@ -8,11 +8,14 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { useToast } from "@/hooks/use-toast";
 import { Car, ArrowLeft } from "lucide-react";
 import { cn } from "@/lib/utils";
+import BookingSummaryModal from "@/components/BookingSummaryModal";
+import PricingCard from "@/components/PricingCard";
 
 const Register = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
   const [isLoading, setIsLoading] = useState(false);
+  const [showSummary, setShowSummary] = useState(false);
 
   const [formData, setFormData] = useState({
     ownerName: "",
@@ -47,7 +50,6 @@ const Register = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setIsLoading(true);
 
     // Validation
     if (!formData.ownerName || !formData.carNumber || !formData.parkingHours || !formData.carType || !formData.parkingSpot) {
@@ -56,10 +58,14 @@ const Register = () => {
         description: "Please fill in all fields",
         variant: "destructive",
       });
-      setIsLoading(false);
       return;
     }
 
+    setShowSummary(true);
+  };
+
+  const handleConfirmBooking = () => {
+    setIsLoading(true);
     // Store data in localStorage
     localStorage.setItem("parkingData", JSON.stringify(formData));
 
@@ -90,11 +96,12 @@ const Register = () => {
 
       {/* Form */}
       <main className="container mx-auto px-4 py-12">
-        <Card className="max-w-4xl mx-auto p-8 shadow-medium">
-          <form onSubmit={handleSubmit} className="space-y-8">
+        <div className="max-w-4xl mx-auto grid lg:grid-cols-3 gap-6">
+          <Card className="lg:col-span-2 p-8 shadow-medium animate-fade-in-up">
+            <form onSubmit={handleSubmit} className="space-y-8">
             {/* Owner & Car Details */}
             <div>
-              <h2 className="text-2xl font-bold mb-6 text-foreground">Owner & Car Details</h2>
+              <h2 className="text-2xl font-display font-bold mb-6 text-foreground">Owner & Car Details</h2>
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <Label htmlFor="ownerName">Owner Name</Label>
@@ -148,7 +155,7 @@ const Register = () => {
 
             {/* Parking Spot Selection */}
             <div>
-              <h2 className="text-2xl font-bold mb-6 text-foreground">Select Parking Spot</h2>
+              <h2 className="text-2xl font-display font-bold mb-6 text-foreground">Select Parking Spot</h2>
               <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
                 {parkingSpots.map((spot) => (
                   <button
@@ -176,16 +183,37 @@ const Register = () => {
               </div>
             </div>
 
-            <Button
-              type="submit"
-              className="w-full h-12 gradient-primary text-primary-foreground font-semibold text-lg"
-              disabled={isLoading}
-            >
-              {isLoading ? "Processing..." : "Proceed to Payment"}
-            </Button>
-          </form>
-        </Card>
+              <Button
+                type="submit"
+                className="w-full h-12 gradient-primary text-primary-foreground font-semibold text-lg"
+                disabled={isLoading}
+              >
+                {isLoading ? "Processing..." : "Review Booking"}
+              </Button>
+            </form>
+          </Card>
+
+          {/* Pricing Sidebar */}
+          <div className="space-y-4 animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
+            <PricingCard carType={formData.carType} parkingHours={formData.parkingHours} />
+            
+            {formData.parkingHours && parseInt(formData.parkingHours) >= 12 && (
+              <Card className="p-4 bg-electric/5 border-electric/20">
+                <p className="text-sm font-medium text-electric">
+                  💡 Tip: Parking for {formData.parkingHours}+ hours? You're getting a special discount!
+                </p>
+              </Card>
+            )}
+          </div>
+        </div>
       </main>
+
+      <BookingSummaryModal
+        isOpen={showSummary}
+        onClose={() => setShowSummary(false)}
+        onConfirm={handleConfirmBooking}
+        data={formData}
+      />
     </div>
   );
 };

@@ -44,8 +44,8 @@ const Home = () => {
       <main className="container mx-auto px-4 py-12">
         <div className="max-w-4xl mx-auto">
           {/* Welcome Section */}
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-foreground mb-4">
+          <div className="text-center mb-12 animate-fade-in-up">
+            <h2 className="text-4xl font-display font-bold text-foreground mb-4">
               Welcome to Your Dashboard
             </h2>
             <p className="text-xl text-muted-foreground">
@@ -55,7 +55,7 @@ const Home = () => {
 
           {/* Action Cards */}
           <div className="grid md:grid-cols-2 gap-6 mb-12">
-            <Card className="p-6 shadow-medium hover:shadow-strong transition-shadow">
+            <Card className="p-6 shadow-medium hover:shadow-strong transition-all hover:scale-[1.02] animate-fade-in-up" style={{ animationDelay: "0.1s" }}>
               <div className="flex items-start gap-4">
                 <div className="w-12 h-12 rounded-lg gradient-primary flex items-center justify-center">
                   <PlusCircle className="w-6 h-6 text-primary-foreground" />
@@ -75,7 +75,7 @@ const Home = () => {
               </div>
             </Card>
 
-            <Card className="p-6 shadow-medium">
+            <Card className="p-6 shadow-medium animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
               <div className="flex items-start gap-4">
                 <div className="w-12 h-12 rounded-lg bg-secondary flex items-center justify-center">
                   <Clock className="w-6 h-6 text-secondary-foreground" />
@@ -84,10 +84,12 @@ const Home = () => {
                   <h3 className="text-xl font-semibold mb-2">Quick Stats</h3>
                   <div className="space-y-2 text-muted-foreground">
                     <div className="flex items-center gap-2">
+                      <div className="w-2 h-2 rounded-full bg-electric animate-pulse-slow" />
                       <MapPin className="w-4 h-4" />
-                      <span>45 Available Spots</span>
+                      <span className="font-medium text-foreground">45 Available Spots</span>
                     </div>
                     <div className="flex items-center gap-2">
+                      <div className="w-2 h-2 rounded-full bg-normal animate-pulse-slow" />
                       <Car className="w-4 h-4" />
                       <span>Electric & Normal Cars</span>
                     </div>
@@ -99,7 +101,7 @@ const Home = () => {
 
           {/* Features Grid */}
           <div className="grid md:grid-cols-3 gap-6">
-            <Card className="p-6 text-center shadow-soft">
+            <Card className="p-6 text-center shadow-soft hover:shadow-medium transition-all hover:scale-105 animate-fade-in-up" style={{ animationDelay: "0.3s" }}>
               <div className="w-12 h-12 rounded-full gradient-electric mx-auto mb-4 flex items-center justify-center">
                 <Car className="w-6 h-6 text-electric-foreground" />
               </div>
@@ -109,7 +111,7 @@ const Home = () => {
               </p>
             </Card>
 
-            <Card className="p-6 text-center shadow-soft">
+            <Card className="p-6 text-center shadow-soft hover:shadow-medium transition-all hover:scale-105 animate-fade-in-up" style={{ animationDelay: "0.4s" }}>
               <div className="w-12 h-12 rounded-full bg-normal mx-auto mb-4 flex items-center justify-center">
                 <Clock className="w-6 h-6 text-normal-foreground" />
               </div>
@@ -119,7 +121,7 @@ const Home = () => {
               </p>
             </Card>
 
-            <Card className="p-6 text-center shadow-soft">
+            <Card className="p-6 text-center shadow-soft hover:shadow-medium transition-all hover:scale-105 animate-fade-in-up" style={{ animationDelay: "0.5s" }}>
               <div className="w-12 h-12 rounded-full gradient-primary mx-auto mb-4 flex items-center justify-center">
                 <MapPin className="w-6 h-6 text-primary-foreground" />
               </div>
