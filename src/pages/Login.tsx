@@ -52,12 +52,12 @@ const Login = () => {
       </div>
 
       {/* Login Card */}
-      <Card className="relative z-10 w-full max-w-md mx-4 p-8 shadow-strong backdrop-blur-sm bg-card/95">
+      <Card className="relative z-10 w-full max-w-md mx-4 p-8 shadow-strong backdrop-blur-sm bg-card/95 animate-fade-in-up">
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full gradient-primary mb-4">
+          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full gradient-primary mb-4 animate-bounce-in">
             <Car className="w-8 h-8 text-primary-foreground" />
           </div>
-          <h1 className="text-3xl font-bold text-foreground mb-2">ParkEase</h1>
+          <h1 className="text-3xl font-display font-bold text-foreground mb-2">ParkEase</h1>
           <p className="text-muted-foreground">Smart Parking Management System</p>
         </div>
 

@@ -109,9 +109,9 @@ const Payment = () => {
       {/* Payment */}
       <main className="container mx-auto px-4 py-12">
         <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-6">
-          {/* Summary Card */}
-          <Card className="p-6 shadow-medium h-fit">
-            <h2 className="text-xl font-bold mb-4">Booking Summary</h2>
+        {/* Summary Card */}
+        <Card className="p-6 shadow-medium h-fit animate-fade-in-up">
+          <h2 className="text-xl font-display font-bold mb-4">Booking Summary</h2>
             <div className="space-y-3">
               <div className="flex justify-between text-sm">
                 <span className="text-muted-foreground">Owner</span>
@@ -143,9 +143,9 @@ const Payment = () => {
             </div>
           </Card>
 
-          {/* Payment Methods */}
-          <Card className="p-6 shadow-medium">
-            <h2 className="text-xl font-bold mb-6">Payment Method</h2>
+      {/* Payment Methods */}
+      <Card className="p-6 shadow-medium animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
+        <h2 className="text-xl font-display font-bold mb-6">Payment Method</h2>
 
             {/* Method Selector */}
             <div className="grid grid-cols-2 gap-4 mb-6">

@@ -45,15 +45,21 @@ const Success = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background flex items-center justify-center px-4">
-      <Card className="max-w-2xl w-full p-8 md:p-12 shadow-strong text-center">
+    <div className="min-h-screen bg-background flex items-center justify-center px-4 relative overflow-hidden">
+      {/* Background decoration */}
+      <div className="absolute inset-0 -z-10">
+        <div className="absolute top-20 left-10 w-72 h-72 bg-electric/20 rounded-full blur-3xl animate-pulse-slow" />
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-primary/10 rounded-full blur-3xl animate-pulse-slow" style={{ animationDelay: "1s" }} />
+      </div>
+
+      <Card className="max-w-2xl w-full p-8 md:p-12 shadow-strong text-center animate-fade-in-up">
         {/* Success Icon */}
-        <div className="inline-flex items-center justify-center w-20 h-20 rounded-full gradient-electric mb-6 animate-in zoom-in duration-500">
+        <div className="inline-flex items-center justify-center w-20 h-20 rounded-full gradient-electric mb-6 animate-bounce-in">
           <CheckCircle2 className="w-12 h-12 text-electric-foreground" />
         </div>
 
         {/* Success Message */}
-        <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+        <h1 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-4 animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
           Parking Registered Successfully!
         </h1>
         <p className="text-lg text-muted-foreground mb-8">
